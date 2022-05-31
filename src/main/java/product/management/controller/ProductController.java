@@ -2,10 +2,7 @@ package product.management.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import product.management.model.Product;
 import product.management.service.IProductService;
@@ -68,6 +65,13 @@ public class ProductController {
     @GetMapping("/{id}/view")
     public String view(@PathVariable int id, Model model){
         model.addAttribute("product", productService.findById(id));
+        return "/view";
+    }
+
+    @PostMapping("/find")
+    public String find(@RequestParam String name, Model model){
+        Product product = productService.findByName(name);
+        model.addAttribute("product", product);
         return "/view";
     }
 }

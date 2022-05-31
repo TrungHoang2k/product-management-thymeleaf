@@ -35,7 +35,13 @@ public class ProductService implements IProductService {
 
     @Override
     public Product findByName(String name){
-        return
+        for(Map.Entry m:products.entrySet()){
+            Product a = (Product)m.getValue();
+            if ( name.equals(a.getName())) {
+                return products.get(m.getKey());
+            }
+        }
+        return null;
     }
 
     @Override

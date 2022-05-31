@@ -39,6 +39,14 @@
     </tr>
     </tbody>
 </table>
+<div id="form">
+    <form th:action="@{/product/find}"
+          method="POST" novalidate="novalidate">
+            <label>Name</label>
+            <input type="text" name="name"/>
+        <input type="submit" value="Find"/>
+    </form>
+</div>
 <footer th:replace="/layout :: footer"></footer>
 </body>
 </html>
